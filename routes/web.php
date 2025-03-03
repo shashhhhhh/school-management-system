@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AcademicYearController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,6 +25,12 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('academic-year/delete/{id}', [AcademicYearController::class, 'delete'])->name('academic-year.delete');
         Route::get('academic-year/edit/{id}', [AcademicYearController::class, 'edit'])->name('academic-year.edit');
         Route::post('academic-year/update', [AcademicYearController::class, 'update'])->name('academic-year.update');
+
+
+        // student Routes
+        Route::get('student/create', [StudentController::class, 'index'])->name('student.create');
+        Route::get('student/store', [StudentController::class, 'index'])->name('student.store');
+
     });
 });
 
