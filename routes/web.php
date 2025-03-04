@@ -8,10 +8,33 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
 }); 
+//Student login Routes
+Route::get('student/login', [UserController::class, 'index'])->name('student.login');
+Route::post('student/authenticate', [UserController::class, 'authenticate'])->name('student.authenticate');
+Route::get('student/dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
+Route::get('student/logout', [UserController::class, 'logout'])->name('student.logout');
+Route::group(['prefix' => 'student'], function () {
+    //guest
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('login', [UserController::class, 'index'])->name('student.login');
+        Route::post('authenticate', [UserController::class, 'authenticate'])->name('student.authenticate');
+    });
+
+    //auth
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
+        Route::get('logout', [UserController::class, 'logout'])->name('student.logout');
+    });
+});
+
+
+
 Route::group(['prefix'=>'admin'],function(){
     Route::group(['middleware'=>'admin.guest'],function(){
         Route::get('login', [AdminController::class, 'index'])->name('admin.login');
