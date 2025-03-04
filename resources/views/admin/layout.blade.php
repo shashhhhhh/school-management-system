@@ -206,7 +206,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
 
-                        
+
                         <li class="nav-item">
                             <a href="{{route('admin.dashboard')}}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -311,7 +311,31 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Student Management
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('student.create')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Student</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('student.read')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Student</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </nav>
 
