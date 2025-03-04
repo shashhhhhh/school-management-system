@@ -13,7 +13,7 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
-}); 
+});
 //Student login Routes
 Route::get('student/login', [UserController::class, 'index'])->name('student.login');
 Route::post('student/authenticate', [UserController::class, 'authenticate'])->name('student.authenticate');
@@ -30,6 +30,8 @@ Route::group(['prefix' => 'student'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::get('dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
         Route::get('logout', [UserController::class, 'logout'])->name('student.logout');
+        Route::get('change-password', [UserController::class, 'changePassword'])->name('student.changePassword');
+        Route::post('update-password', [UserController::class, 'updatePassword'])->name('student.updatePassword');
     });
 });
 
@@ -43,9 +45,9 @@ Route::group(['prefix'=>'admin'],function(){
     });
     Route::group(['middleware'=>'admin.auth'],function(){
         Route::get('logout', [AdminController::class, 'logout'])->name('admin.logout');
-        Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard'); 
-        Route::get('form', [AdminController::class, 'form'])->name('admin.form'); 
-        Route::get('table', [AdminController::class, 'table'])->name('admin.table'); 
+        Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('form', [AdminController::class, 'form'])->name('admin.form');
+        Route::get('table', [AdminController::class, 'table'])->name('admin.table');
 
         //Academic Year Management
         Route::get('academic-year/create', [AcademicYearController::class, 'index'])->name('academic-year.create');
