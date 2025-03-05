@@ -8,6 +8,13 @@ use Carbon\Carbon;
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
+                <div class="col-md-12">
+                    @foreach ( $announcement as $item )
+                        <div class="alert alert-warning">
+                            {{ $item->message }}
+                        </div>
+                    @endforeach
+                </div>
                 <div class="col-sm-6">
                     <h1 class="m-0">Student Dashboard</h1>
                     @if(Carbon::parse(Auth::user()->dob)->isBirthday())
