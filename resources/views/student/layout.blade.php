@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Student | Dashboard</title>
     <base href="{{ asset('admincss') }}/" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
@@ -208,14 +208,31 @@
 
 
                         <li class="nav-item">
-                            <a href="{{route('admin.dashboard')}}" class="nav-link">
+                            <a href="{{route('student.dashboard')}}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('student.changePassword')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Change Password
+                                </p>
+                            </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a href="{{route('student.logout')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    LogOut
+                                </p>
+                            </a>
+                        </li>
+                        <!--
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
@@ -334,31 +351,8 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Announcement Management
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{route('announcement.create')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Announcement</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{route('announcement.read')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View Announcement</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 </nav>
 
