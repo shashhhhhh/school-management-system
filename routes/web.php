@@ -7,6 +7,7 @@ use App\Http\Controllers\FeeStructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AcademicYearController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -91,6 +92,14 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('student/update/{id}', [StudentController::class, 'update'])->name('student.update');
         Route::get('student/delete/{id}', [StudentController::class, 'delete'])->name('student.delete');
 
+
+        //Announcement Management Routes
+        Route::get('announcement/create', [AnnouncementController::class, 'index'])->name('announcement.create');
+        Route::post('announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
+        Route::get('announcement/read', [AnnouncementController::class, 'read'])->name('announcement.read');
+        Route::get('announcement/edit/{id}', [AnnouncementController::class, 'edit'])->name('announcement.edit');
+        Route::post('announcement/update/{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
+        Route::get('announcement/delete/{id}', [AnnouncementController::class, 'delete'])->name('announcement.delete');
 
 
 

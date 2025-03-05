@@ -215,6 +215,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('student.changePassword')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Change Password
+                                </p>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a href="{{route('student.logout')}}" class="nav-link">
@@ -224,7 +232,7 @@
                                 </p>
                             </a>
                         </li>
-                        <!-- 
+                        <!--
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>

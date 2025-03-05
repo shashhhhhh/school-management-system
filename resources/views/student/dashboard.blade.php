@@ -9,7 +9,7 @@ use Carbon\Carbon;
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="m-0">Student Dashboard</h1>
                     @if(Carbon::parse(Auth::user()->dob)->isBirthday())
                     Happy Birthday {{ Auth::user()->name }}
                     @endif
