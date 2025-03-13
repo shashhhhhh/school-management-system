@@ -13,7 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Models\User;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.login');
 });
 //Student login Routes
 Route::get('student/login', [UserController::class, 'index'])->name('student.login');
