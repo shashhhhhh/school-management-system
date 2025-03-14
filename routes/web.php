@@ -10,6 +10,7 @@ use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SubjectController;
 use App\Models\User;
 
 Route::get('/', function () {
@@ -65,6 +66,11 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('class/edit/{id}', [ClassesController::class, 'edit'])->name('class.edit');
         Route::post('class/update', [ClassesController::class, 'update'])->name('class.update');
         Route::get('class/delete/{id}', [ClassesController::class, 'delete'])->name('class.delete');
+
+        //subjcet Management
+        Route::get('subject/create', [SubjectController::class, 'index'])->name('subject.create');
+        Route::post('subject/store', [SubjectController::class, 'store'])->name('subject.store');
+
 
         //Fee Head Management
         Route::get('fee-head/create', [FeeHeadController::class, 'index'])->name('fee-head.create');
