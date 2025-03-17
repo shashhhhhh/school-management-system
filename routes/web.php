@@ -19,10 +19,13 @@ Route::get('/', function () {
     return view('admin.login');
 });
 //Student login Routes
-Route::get('student/login', [UserController::class, 'index'])->name('student.login');
-Route::post('student/authenticate', [UserController::class, 'authenticate'])->name('student.authenticate');
-Route::get('student/dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
-Route::get('student/logout', [UserController::class, 'logout'])->name('student.logout');
+// Route::get('student/login', [UserController::class, 'index'])->name('student.login');
+// Route::post('student/authenticate', [UserController::class, 'authenticate'])->name('student.authenticate');
+// Route::get('student/dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
+// Route::get('student/logout', [UserController::class, 'logout'])->name('student.logout');
+
+
+//Student login Routes
 Route::group(['prefix' => 'student'], function () {
     //guest
     Route::group(['middleware' => 'guest'], function () {
@@ -39,8 +42,21 @@ Route::group(['prefix' => 'student'], function () {
     });
 });
 
+//Teacher Routes
+Route::group(['prefix'=>'teacher'],function(){
+    Route::group(['middleware'=>'teacher.guest'],function(){
+        Route::get('login', [TeacherController::class, 'login'])->name('teacher.login');
+        Route::post('authenticate', [TeacherController::class, 'authenticate'])->name('teacher.authenticate');
+    });
 
+    Route::group(['middleware'=>'teacher.auth'],function(){
+        Route::get('dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
+        Route::get('logout', [TeacherController::class, 'logout'])->name('teacher.logout');
+    });
 
+});
+
+//Admin Routes
 Route::group(['prefix'=>'admin'],function(){
     Route::group(['middleware'=>'admin.guest'],function(){
         Route::get('login', [AdminController::class, 'index'])->name('admin.login');

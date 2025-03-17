@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -73,4 +74,35 @@ class TeacherController extends Controller
         $teacher->delete();
         return redirect()->route('teacher.read')->with('success', 'Teacher Deleted Successfully');
      }
+
+     public function login(){
+        return view('teacher.login');
+     }
+
+     public function authenticate(Request $req){
+        $req->validate([
+            'email'=>'required',
+            'password'=>'required'
+        ]);
+        if(Auth::guard('teacher')->attempt(['email'=>$req->email,'password'=>$req->password]))
+        {
+            if(Auth::guard('teacher')->user()->role != 'teacher'){
+                Auth::guard('teacher')->logout();
+                return redirect()->route('teacher.login')->with('error','Unauthorized user. Access denied!');
+            }
+            return redirect()->route('teacher.dashboard');
+        } else {
+            return redirect()->route('teacher.login')->with('error','Invalid email or password');
+        }
+     }
+
+     public function dashboard(){
+        return view('teacher.dashboard');
+     }
+
+     public function logout()
+    {
+        Auth::guard('teacher')->logout();
+        return redirect()->route('teacher.login')->with('success','logged out successfully!');
+    }
 }
