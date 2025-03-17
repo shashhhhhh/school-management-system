@@ -12,6 +12,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AssignSubjectToClassController;
+use App\Http\Controllers\TeacherController;
 use App\Models\User;
 
 Route::get('/', function () {
@@ -82,6 +83,14 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('assign-subject/delete/{id}', [AssignSubjectToClassController::class, 'delete'])->name('assign-subject.delete');
         Route::get('assign-subject/edit/{id}', [AssignSubjectToClassController::class, 'edit'])->name('assign-subject.edit');
         Route::post('assign-subject/update/{id}', [AssignSubjectToClassController::class, 'update'])->name('assign-subject.update');
+
+        //Teacher Management
+        Route::get('teacher/create', [TeacherController::class, 'index'])->name('teacher.create');
+        Route::post('teacher/store', [TeacherController::class, 'store'])->name('teacher.store');
+        Route::get('teacher/read', [TeacherController::class, 'read'])->name('teacher.read');
+        Route::get('teacher/edit/{id}', [TeacherController::class, 'edit'])->name('teacher.edit');
+        Route::post('teacher/update/{id}', [TeacherController::class, 'update'])->name('teacher.update');
+        Route::get('teacher/delete/{id}', [TeacherController::class, 'delete'])->name('teacher.delete');
 
         //Fee Head Management
         Route::get('fee-head/create', [FeeHeadController::class, 'index'])->name('fee-head.create');
