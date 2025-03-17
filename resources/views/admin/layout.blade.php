@@ -381,6 +381,18 @@
                                         <p>View Subject</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{route('assign-subject.create')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Assign Subject to Class</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('assign-subject.read')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Assigned Subject to Class</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
