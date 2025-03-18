@@ -52,6 +52,7 @@ Route::group(['prefix'=>'teacher'],function(){
 
     Route::group(['middleware'=>'teacher.auth'],function(){
         Route::get('dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
+        Route::get('myclass', [TeacherController::class, 'myClass'])->name('teacher.my-class');
         Route::get('logout', [TeacherController::class, 'logout'])->name('teacher.logout');
     });
 
@@ -152,9 +153,13 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('announcement/update/{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
         Route::get('announcement/delete/{id}', [AnnouncementController::class, 'delete'])->name('announcement.delete');
 
-
     });
+    Route:: get('clear', function (){
+        Artisan::call('optimize:clear');
+        return redirect ()->back()->with('success', 'Successfully cache cleared');
+    })->name('cache.clear');
 });
+
 
 
 

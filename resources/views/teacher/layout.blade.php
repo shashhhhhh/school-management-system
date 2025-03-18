@@ -76,7 +76,8 @@
                     </div>
                 </li> --}}
 
-                {{-- <li class="nav-item dropdown">
+                {{-- 
+                <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-comments"></i>
                         <span class="badge badge-danger navbar-badge">3</span>
@@ -217,6 +218,15 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{route('teacher.my-class')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    My Class & Subject 
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{route('teacher.logout')}}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -225,7 +235,7 @@
                             </a>
                         </li>
 
-                        {{-- <li class="nav-item">
+                        <!-- {{-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
@@ -247,7 +257,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> --}}
+                        </li> --}} -->
                     </ul>
                 </nav>
 

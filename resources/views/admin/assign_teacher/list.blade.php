@@ -60,8 +60,9 @@
                                       <th>ID</th>
                                       <th>Class Name</th>
                                       <th>Subject Name</th>
+                                      <th>Theory/Practical</th>
                                       <th>Teacher Name</th>
-                                      <th>Created ON</th>
+                                      <th>Created Time</th>
                                       <th>Edit</th>
                                       <th>Delete</th>
                                   </tr>
@@ -72,6 +73,7 @@
                                       <td>{{$assign_teacher->id}}</td>
                                       <td>{{$assign_teacher->class->name}}</td>
                                       <td>{{$assign_teacher->subject->name}}</td>
+                                      <td>{{$assign_teacher->subject->type}}</td>
                                       <td>{{$assign_teacher->teacher->name}}</td>
                                       <td>{{$assign_teacher->created_at}}</td>
                                       <td><a href="{{route('assign-teacher.edit',$assign_teacher->id)}}" 

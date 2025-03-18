@@ -105,4 +105,8 @@ class TeacherController extends Controller
         Auth::guard('teacher')->logout();
         return redirect()->route('teacher.login')->with('success','logged out successfully!');
     }
+
+    public function myClass(){
+        
+    }
 }
