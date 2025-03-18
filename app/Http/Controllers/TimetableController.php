@@ -12,7 +12,11 @@ class TimetableController extends Controller
      */
     public function index()
     {
-        //
+        $data['days'] = Day::all();
+        $data['classes'] = Classes::all();
+        $data['subjects'] = Subjects::all();
+    
+        return view ('admin.timetable.create',$data);
     }
 
     /**

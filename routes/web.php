@@ -12,6 +12,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AssignSubjectToClassController;
+use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AssignTeacherToClassController;
 use App\Models\User;
@@ -140,6 +141,12 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('student/update/{id}', [StudentController::class, 'update'])->name('student.update');
         Route::get('student/delete/{id}', [StudentController::class, 'delete'])->name('student.delete');
 
+        //Timetable Management Routes
+        Route::get('timetable/create', [TimetableController::class, 'index'])->name('timetable.create');
+        Route::get('timetable/create', [TimetableController::class, 'index'])->name('timetable.create');
+        Route::get('timetable/create', [TimetableController::class, 'index'])->name('timetable.create');
+        Route::get('timetable/create', [TimetableController::class, 'index'])->name('timetable.create');
+    
 
         //Announcement Management Routes
         Route::get('announcement/create', [AnnouncementController::class, 'index'])->name('announcement.create');
