@@ -68,7 +68,7 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                @foreach(assign_teachers as assign_teacher)
+                                @foreach($assign_teachers as assign_teacher)
                                   <tr>
                                       <td>{{$assign_teacher->id}}</td>
                                       <td>{{$assign_teacher->class->name}}</td>

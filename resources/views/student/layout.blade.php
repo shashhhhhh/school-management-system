@@ -225,6 +225,15 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{route('student.mySubject')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    My Subject
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{route('student.logout')}}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>

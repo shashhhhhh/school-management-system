@@ -19,11 +19,6 @@ use App\Models\User;
 Route::get('/', function () {
     return view('admin.login');
 });
-//Student login Routes
-// Route::get('student/login', [UserController::class, 'index'])->name('student.login');
-// Route::post('student/authenticate', [UserController::class, 'authenticate'])->name('student.authenticate');
-// Route::get('student/dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
-// Route::get('student/logout', [UserController::class, 'logout'])->name('student.logout');
 
 
 //Student login Routes
@@ -40,6 +35,7 @@ Route::group(['prefix' => 'student'], function () {
         Route::get('logout', [UserController::class, 'logout'])->name('student.logout');
         Route::get('change-password', [UserController::class, 'changePassword'])->name('student.changePassword');
         Route::post('update-password', [UserController::class, 'updatePassword'])->name('student.updatePassword');
+        Route::post('my-subject', [UserController::class, 'mySubject'])->name('student.mySubject');
     });
 });
 
@@ -152,6 +148,7 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('announcement/edit/{id}', [AnnouncementController::class, 'edit'])->name('announcement.edit');
         Route::post('announcement/update/{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
         Route::get('announcement/delete/{id}', [AnnouncementController::class, 'delete'])->name('announcement.delete');
+
 
     });
     Route:: get('clear', function (){

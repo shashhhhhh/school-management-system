@@ -1,4 +1,4 @@
-@extends('teacher.layout')
+@extends('student.layout')
 @section('customCSS')
 <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -11,12 +11,12 @@
       <div class="container-fluid">
           <div class="row mb-2">
               <div class="col-sm-6">
-                  <h1>My Class & Subject</h1>
+                  <h1>My Subject & Teacher </h1>
               </div>
               <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
-                      <li class="breadcrumb-item"><a href="{{route('teacher.dashboard')}}">Home</a></li>
-                      <li class="breadcrumb-item active">My Class & Subject </li>
+                      <li class="breadcrumb-item"><a href="{{route('student.dashboard')}}">Home</a></li>
+                      <li class="breadcrumb-item active">My Subject & Teacher </li>
                   </ol>
               </div>
           </div>
@@ -58,19 +58,19 @@
                               <thead>
                                   <tr>
                                       <th>ID</th>
-                                      <th>Class Name</th>
                                       <th>Subject Name</th>
                                       <th>Thoery/Practical</th>
+                                      <th>Teacher Name</th>
                                     
                                   </tr>
                               </thead>
                               <tbody>
-                                @foreach($assign_class as $myclass)
+                                @foreach($my_subjects as $mysubject)
                                   <tr>
-                                      <td>{{$myclass->id}}</td>
-                                      <td>{{$myclass->class->name}}</td>
-                                      <td>{{$myclass->subject->name}}</td>
-                                      <td>{{$myclass->subject->type}}</td>
+                                      <td>{{mysubject->id}}</td>
+                                      <td>{{mysubject->subject->name}}</td>
+                                      <td>{{mysubject->subject->type}}</td>
+                                      <td>{{mysubject->teacher->name}}</td>
                                   </tr>
                                   @endforeach
                               </tbody>

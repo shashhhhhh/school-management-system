@@ -34,6 +34,12 @@ class UserController extends Controller
         return view('student.dashboard', $data);
     }
 
+    public function mySubject()
+    {
+       $class_id = Auth::guard("web")->user()->class_id;
+       $data['my_subjects'] = AssignTeacherToClass::where('class_id')->with('subject','teacher')->get();
+        return view ('student.my_subject',$data);
+    }
 
     public function logout()
     {
