@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignTeacherToClass;
-use Illuminate\Http\Request;
-use App\Models\Classes;
-use App\Models\User;
 use App\Models\AssignSubjectToClass;
+use App\Models\Classes;
+use App\Models\Teacher;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+
 
 class AssignTeacherToClassController extends Controller
 {
@@ -56,9 +59,25 @@ class AssignTeacherToClassController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(AssignTeacherToClass $assignTeacherToClass)
+    public function read(Request $request)
     {
-        //
+        $data['classes'] = Classes::all();
+        $assign_teachers = AssignTeacherToClass::with(['class','subject','teacher']);
+        if($request->class_id){
+            $assign_teachers->where('class_id',$request->class_id);
+        }
+
+        $assign_teachers = $assign_teachers->latest()->get();
+        $data['assign_teachers'] = $assign_teachers;
+        return view('admin.assign_teacher.list',$data);
+    }
+
+
+    public function delete($id)
+    {
+        $res = AssignTeacherToClass::find($id);
+        $res->delete();
+        return redirect()->back()->with('success','Teacher assign to a class Deleted Successfully');
     }
 
     /**

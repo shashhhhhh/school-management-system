@@ -439,7 +439,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
-                                    Assign Teacher Management
+                                    Assign Teacher to Class Management
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -459,6 +459,8 @@
                                 </li>
                             </ul>
                         </li>
+
+                      
                     </ul>
                 </nav>
 
