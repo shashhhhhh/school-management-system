@@ -47,19 +47,19 @@ class StudentController extends Controller
 
     }
     public function read(Request $request){
-  $query = User:: with (['studentClass', 'studentAcademicYear'])->where('role', 'student')->latest('id');
-  if($request->filled('academic_year_id'))
-  {
-    $query->where('academic_year_id', $request->get('academic_year_id'));
-  }
-  if ($request->filled('class_id')) {
-     $query->where('class_id', $request->get('class_id'));
-  }
-  $data['students'] = $query->get();
-  $data['classes'] = Classes::all();
-  $data['academic_year'] = AcademicYear::all();
-  return view('admin.student.student_list', $data);
-}
+        $query = User:: with (['studentClass', 'studentAcademicYear'])->where('role', 'student')->latest('id');
+        if($request->filled('academic_year_id'))
+        {
+            $query->where('academic_year_id', $request->get('academic_year_id'));
+        }
+        if ($request->filled('class_id')) {
+            $query->where('class_id', $request->get('class_id'));
+        }
+        $data['students'] = $query->get();
+        $data['classes'] = Classes::all();
+        $data['academic_year'] = AcademicYear::all();
+        return view('admin.student.student_list', $data);
+    }
 
 public function edit($id){
    $data['classes'] = Classes::all();

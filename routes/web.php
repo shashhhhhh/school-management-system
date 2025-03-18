@@ -6,19 +6,40 @@ use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\UserController;
+<<<<<<< HEAD
 use App\Http\Controllers\SubjectController; // Ensure this is imported
 use App\Http\Controllers\AssignSubjectToClassController; // Ensure this is imported
 use App\Http\Controllers\StudentController; // Ensure this is imported
 use App\Http\Controllers\AnnouncementController; // Ensure this is imported
 use Illuminate\Support\Facades\Route;
+=======
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\AssignSubjectToClassController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AssignTeacherToClassController;
+use App\Models\User;
+>>>>>>> d765e8c6a56c738c21887c6e3d5b21af051de2a1
 
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 
 // User Routes
 Route::group(['prefix' => 'admin'], function () {
     // Guest Routes
+=======
+//Student login Routes
+// Route::get('student/login', [UserController::class, 'index'])->name('student.login');
+// Route::post('student/authenticate', [UserController::class, 'authenticate'])->name('student.authenticate');
+// Route::get('student/dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
+// Route::get('student/logout', [UserController::class, 'logout'])->name('student.logout');
+
+
+//Student login Routes
+Route::group(['prefix' => 'student'], function () {
+    //guest
+>>>>>>> d765e8c6a56c738c21887c6e3d5b21af051de2a1
     Route::group(['middleware' => 'guest'], function () {
         Route::get('login', [UserController::class, 'index'])->name('student.login');
         Route::post('authenticate', [AdminController::class, 'authenticate'])->name('student.authenticate');
@@ -34,9 +55,29 @@ Route::group(['prefix' => 'admin'], function () {
     });
 });
 
+<<<<<<< HEAD
 // Admin Routes
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'admin.guest'], function () {
+=======
+//Teacher Routes
+Route::group(['prefix'=>'teacher'],function(){
+    Route::group(['middleware'=>'teacher.guest'],function(){
+        Route::get('login', [TeacherController::class, 'login'])->name('teacher.login');
+        Route::post('authenticate', [TeacherController::class, 'authenticate'])->name('teacher.authenticate');
+    });
+
+    Route::group(['middleware'=>'teacher.auth'],function(){
+        Route::get('dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
+        Route::get('logout', [TeacherController::class, 'logout'])->name('teacher.logout');
+    });
+
+});
+
+//Admin Routes
+Route::group(['prefix'=>'admin'],function(){
+    Route::group(['middleware'=>'admin.guest'],function(){
+>>>>>>> d765e8c6a56c738c21887c6e3d5b21af051de2a1
         Route::get('login', [AdminController::class, 'index'])->name('admin.login');
         Route::get('register', [AdminController::class, 'register'])->name('admin.register');
         Route::post('login', [AdminController::class, 'authenticate'])->name('admin.authenticate');
@@ -80,7 +121,24 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('assign-subject/edit/{id}', [AssignSubjectToClassController::class, 'edit'])->name('assign-subject.edit');
         Route::post('assign-subject/update/{id}', [AssignSubjectToClassController::class, 'update'])->name('assign-subject.update');
 
+<<<<<<< HEAD
         // Fee Head Management
+=======
+        //Assign Teacher to Class
+        Route::get('assign-teacher/create', [AssignTeacherToClassController::class, 'index'])->name('assign-teacher.create');
+        Route::post('assign-teacher/store', [AssignTeacherToClassController::class, 'store'])->name('assign-teacher.store');
+        Route::get('findSubject', [AssignTeacherToClassController::class, 'findSubject'])->name('findSubject');
+
+        //Teacher Management
+        Route::get('teacher/create', [TeacherController::class, 'index'])->name('teacher.create');
+        Route::post('teacher/store', [TeacherController::class, 'store'])->name('teacher.store');
+        Route::get('teacher/read', [TeacherController::class, 'read'])->name('teacher.read');
+        Route::get('teacher/edit/{id}', [TeacherController::class, 'edit'])->name('teacher.edit');
+        Route::post('teacher/update/{id}', [TeacherController::class, 'update'])->name('teacher.update');
+        Route::get('teacher/delete/{id}', [TeacherController::class, 'delete'])->name('teacher.delete');
+
+        //Fee Head Management
+>>>>>>> d765e8c6a56c738c21887c6e3d5b21af051de2a1
         Route::get('fee-head/create', [FeeHeadController::class, 'index'])->name('fee-head.create');
         Route::post('fee-head/store', [FeeHeadController::class, 'store'])->name('fee-head.store');
         Route::get('fee-head/read', [FeeHeadController::class, 'read'])->name('fee-head.read');

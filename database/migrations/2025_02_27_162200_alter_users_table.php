@@ -12,14 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('class_id')->nullable();
-        $table->unsignedBigInteger('academic_year_id')->nullable();
-
-        // Ensure the referenced column exists in the classes and academic_years tables
-        $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
-        $table->foreign('academic_year_id')->references('id')->on('academic_years')->onDelete('cascade');
-
-
+            // $table->unsignedBigInteger('class_id')->nullable();
+            // $table->unsignedBigInteger('academic_year_id')->nullable();
+            // Ensure the referenced column exists in the classes and academic_years tables
+            // $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->foreignId('class_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('academic_year_id')->constrained()->onDelete('cascade')->nullable();
+            //$table->foreign('academic_year_id')->references('id')->on('academic_years')->onDelete('cascade');
             $table->string('admission_date')->nullable();
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
