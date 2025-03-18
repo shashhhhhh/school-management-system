@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Admin Dashboard</title>
     <base href="{{ asset('admincss') }}/" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
@@ -25,6 +25,8 @@
 
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     @yield('customCSS')
 </head>
@@ -44,17 +46,17 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                {{-- <li class="nav-item d-none d-sm-inline-block">
                     <a href="index3.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
-                </li>
+                </li> --}}
             </ul>
 
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" data-widget="navbar-search" href="#" role="button">
                         <i class="fas fa-search"></i>
                     </a>
@@ -74,9 +76,9 @@
                             </div>
                         </form>
                     </div>
-                </li>
+                </li> --}}
 
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-comments"></i>
                         <span class="badge badge-danger navbar-badge">3</span>
@@ -163,18 +165,18 @@
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true"
                         href="#" role="button">
                         <i class="fas fa-th-large"></i>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
 
@@ -429,6 +431,31 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>View Teacher</p>
                                     </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Assign Teacher Management
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{route('assign-teacher.create')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Assign Teacher to Class</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    {{-- <a href="{{route('assign-teacher.read')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Assigned Teacher to Class</p>
+                                    </a> --}}
                                 </li>
                             </ul>
                         </li>

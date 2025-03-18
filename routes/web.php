@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AssignSubjectToClassController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AssignTeacherToClassController;
 use App\Models\User;
 
 Route::get('/', function () {
@@ -99,6 +100,11 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('assign-subject/delete/{id}', [AssignSubjectToClassController::class, 'delete'])->name('assign-subject.delete');
         Route::get('assign-subject/edit/{id}', [AssignSubjectToClassController::class, 'edit'])->name('assign-subject.edit');
         Route::post('assign-subject/update/{id}', [AssignSubjectToClassController::class, 'update'])->name('assign-subject.update');
+
+        //Assign Teacher to Class
+        Route::get('assign-teacher/create', [AssignTeacherToClassController::class, 'index'])->name('assign-teacher.create');
+        Route::post('assign-teacher/store', [AssignTeacherToClassController::class, 'store'])->name('assign-teacher.store');
+        Route::get('findSubject', [AssignTeacherToClassController::class, 'findSubject'])->name('findSubject');
 
         //Teacher Management
         Route::get('teacher/create', [TeacherController::class, 'index'])->name('teacher.create');
