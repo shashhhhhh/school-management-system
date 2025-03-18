@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('class_id')->constrained()->onDelete('cascade'); // Ensure classes table exists
             $table->foreignId('subject_id')->constrained()->onDelete('cascade'); // Ensure subjects table exists
-            $table->foreignId('teacher_id')->constrained()->onDelete('cascade'); // Ensure teachers table exists
+            $table->foreignId('teacher_id')->constrained('users')->onDelete('cascade'); // Ensure teachers table exists
             $table->timestamps();
         });
     }
