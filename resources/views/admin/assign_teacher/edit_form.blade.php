@@ -33,9 +33,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">Update Assign Teacher</h3>
                             </div>
-
-
-                            <form action="{{ route('assign-teacher.store') }}" method="post">
+                            <form action="{{ route('assign-teacher.update',$assign_teacher->id) }}" method="post">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
@@ -71,7 +69,7 @@
                                             <option disabled selected>Select Teacher</option>
                                             @foreach ($teachers as $teacher)
                                                 <option value="{{ $teacher->id }}" {{$assign_teacher->teacher_id == 
-                                                    $teacher_id ? 'selected' : ''}} > {{ $teacher->name }}</option>
+                                                    $teacher->id ? 'selected' : ''}} > {{ $teacher->name }}</option>
                                             @endforeach
                                         </select>
                                         @error('teacher_id')
@@ -80,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>

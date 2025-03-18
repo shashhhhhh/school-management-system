@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AssignTeacherToClass;
 use App\Models\AssignSubjectToClass;
 use App\Models\Classes;
+use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -83,24 +84,27 @@ class AssignTeacherToClassController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AssignTeacherToClass $assignTeacherToClass)
-    {
-        //
+    public function edit($id){
+        $res = AssignTeacherToClass::find($id);
+        $data['assign_teacher'] = $res;
+        $data['subjects'] = AssignSubjectToClass::with('subject')->where('class_id',$res->class_id)->get();
+        // dd($data['subjects']);
+        $data['classes'] = Classes::all();
+
+        $data['teachers'] = User::where('role', 'teacher')->latest()->get();
+        return view('admin.assign_teacher.edit_form',$data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, AssignTeacherToClass $assignTeacherToClass)
+    public function update(Request $request,$id)
     {
-        //
+        $res = AssignTeacherToClass::find($id);
+        $res->class_id = $request->class_id;
+        $res->subject_id = $request->subject_id;
+        $res->teacher_id = $request->teacher_id;
+        $res->update();
+        return redirect()->route('assign-teacher.read')->with('success', 'Teacher Assigned Updated successfully');
     }
+    
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(AssignTeacherToClass $assignTeacherToClass)
-    {
-        //
-    }
+
 }

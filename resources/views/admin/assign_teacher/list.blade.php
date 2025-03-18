@@ -38,7 +38,7 @@
                     </div>
                         @endif
                       <div class="card-header">
-                        <!-- <form action="" class="row">
+                        <form action="" class="row">
                           <div class="form-group col-md-3">
                             <select name="class_id" class="form-control">
                                 <option disabled selected>Select Class</option>
@@ -50,7 +50,7 @@
                           <div class="col-md-3">
                             <button type="submit" class="btn btn-primary">Filter</button>
                           </div>
-                        </form> -->
+                        </form>
                       </div>
 
                       <div class="card-body">
@@ -74,9 +74,9 @@
                                       <td>{{$assign_teacher->subject->name}}</td>
                                       <td>{{$assign_teacher->teacher->name}}</td>
                                       <td>{{$assign_teacher->created_at}}</td>
-                                      <td><a href="{{route('assign-subject.edit',$assign_teacher->id)}}" 
+                                      <td><a href="{{route('assign-teacher.edit',$assign_teacher->id)}}" 
                                       class="btn btn-primary">Edit</a></td>
-                                      <td><a href="{{route('assign-subject.delete',$assign_teacher->id)}}" 
+                                      <td><a href="{{route('assign-teacher.delete',$assign_teacher->id)}}" 
                                       onclick="return confirm('Are You Sure You Want To Delete This Item?');" class="btn 
                                       btn-danger">Delete</a></td>
                                   </tr>

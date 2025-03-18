@@ -86,7 +86,7 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('class/update', [ClassesController::class, 'update'])->name('class.update');
         Route::get('class/delete/{id}', [ClassesController::class, 'delete'])->name('class.delete');
 
-        //subjcet Management
+        //Subject Management
         Route::get('subject/create', [SubjectController::class, 'index'])->name('subject.create');
         Route::post('subject/store', [SubjectController::class, 'store'])->name('subject.store');
         Route::get('subject/read', [SubjectController::class, 'read'])->name('subject.read');
@@ -105,6 +105,10 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('assign-teacher/create', [AssignTeacherToClassController::class, 'index'])->name('assign-teacher.create');
         Route::post('assign-teacher/store', [AssignTeacherToClassController::class, 'store'])->name('assign-teacher.store');
         Route::get('findSubject', [AssignTeacherToClassController::class, 'findSubject'])->name('findSubject');
+        Route::get('assign-teacher/read', [AssignTeacherToClassController::class, 'read'])->name('assign-teacher.read');
+        Route::get('assign-teacher/delete/{id}', [AssignTeacherToClassController::class, 'delete'])->name('assign-teacher.delete');
+        Route::get('assign-teacher/edit/{id}', [AssignTeacherToClassController::class, 'edit'])->name('assign-teacher.edit');
+        Route::post('assign-teacher/update/{id}', [AssignTeacherToClassController::class, 'update'])->name('assign-teacher.update');
 
         //Teacher Management
         Route::get('teacher/create', [TeacherController::class, 'index'])->name('teacher.create');
@@ -131,7 +135,6 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('fee-structure/update/{id}', [FeeStructureController::class, 'update'])->name('fee-structure.update');
 
 
-
         //Student Management Routes
          Route::get('student/create', [StudentController::class, 'index'])->name('student.create');
          Route::post('student/store', [StudentController::class, 'store'])->name('student.store');
@@ -148,9 +151,6 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('announcement/edit/{id}', [AnnouncementController::class, 'edit'])->name('announcement.edit');
         Route::post('announcement/update/{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
         Route::get('announcement/delete/{id}', [AnnouncementController::class, 'delete'])->name('announcement.delete');
-
-
-
 
 
     });
