@@ -47,7 +47,7 @@
                                   <tr>
                                       <th>ID</th>
                                       <th>Type</th>
-                                      <th>Brodcast To</th>
+                                      <th>Brodcast Message</th>
                                       <th>Created Time</th>
                                       <th>Edit</th>
                                       <th>Delete</th>
@@ -69,7 +69,7 @@
                                   <tr>
                                       <th>ID</th>
                                       <th>Type</th>
-                                      <th>Brodcast To</th>
+                                      <th>Brodcast Message</th>
                                       <th>Created Time</th>
                                       <th>Edit</th>
                                       <th>Delete</th>
