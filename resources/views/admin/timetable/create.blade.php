@@ -34,11 +34,11 @@
                             <h3 class="card-title">Add Timetable</h3>
                         </div>
 
-                        <form action="{{ route('assign-subject.store') }}" method="post">
+                        <form action="{{ route('timetable.store') }}" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <select name="class_id" class="form-control">
+                                    <select name="class_id" id="class_id" class="form-control">
                                         <option disabled selected>Select Class</option>
                                         @foreach ($classes as $class)
                                             <option value="{{ $class->id }}">{{ $class->name }}</option>
@@ -49,11 +49,11 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <select name="subject_id" class="form-control">
+                                    <select name="subject_id" id="subject_id" class="form-control">
                                         <option disabled selected>Select Subject</option>
-                                        @foreach ($subjects as $subject)
+                                        <!-- @foreach ($subjects as $subject)
                                             <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                        @endforeach
+                                        @endforeach -->
                                     </select>
                                     @error('subject_id') 
                                         <p class="text-danger">{{ $message }}</p>
@@ -78,7 +78,7 @@
                                             <input type="hidden" name="timetable[{{$i}}][day_id]" value="{{$day->id}}">
                                             <td><input type="time" name="timetable[{{$i}}][start_time]"></td>
                                             <td><input type="time" name="timetable[{{$i}}][end_time]"></td>
-                                            <td><input type="number" name="timetable[{{$i}}][room_no]"></td>
+                                            <td><input type="number" name="timetable[{{$i}}][room_no]" placeholder="Room Number"></td>
                                         </tr>
                                         @php
                                             $i++;
@@ -100,4 +100,26 @@
     </section>
 
 </div>
+@section('customJS')
+    <script>
+        $('#class_id').change(function(){
+            const class_id = $(this).val();
+            $.ajax({
+                url: "{{ route('findSubject') }}",
+                type:"get",
+                data: {class_id},
+                dataType: 'json',
+                success: function(response){
+                    $('#subject_id').find('option').not(":first").remove();
+                    $.each(response['subjects'],(key,item)=>{
+                        $('#subject_id').append(`
+                            <option value="${item.subject_id}">${item.subject.name}</option>`
+                        )
+
+                    })
+                }
+            })
+        })
+    </script>
+@endsection
 @endsection

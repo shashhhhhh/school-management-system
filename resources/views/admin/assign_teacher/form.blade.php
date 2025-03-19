@@ -39,7 +39,7 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <select name="class_id" class="form-control" id="class_id">
+                                        <select name="class_id" id="class_id" class="form-control">
                                             <option disabled selected>Select Class</option>
                                             @foreach ($classes as $class)
                                                 <option value="{{ $class->id }}">{{ $class->name }}</option>
@@ -52,7 +52,7 @@
 
 
                                     <div class="form-group">
-                                        <select name="subject_id" class="form-control" id="subject_id">
+                                        <select name="subject_id" id="subject_id" class="form-control" >
                                             <option disabled selected>Select Subject</option>
                                         </select>
                                         @error('subject_id')
@@ -84,7 +84,7 @@
         </section>
 
     </div>
-@endsection
+    
 @section('customJS')
     <script>
         $('#class_id').change(function(){
@@ -106,4 +106,5 @@
             })
         })
     </script>
+@endsection
 @endsection

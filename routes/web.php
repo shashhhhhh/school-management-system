@@ -12,9 +12,9 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AssignSubjectToClassController;
-use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AssignTeacherToClassController;
+use App\Http\Controllers\TimetableController;
 use App\Models\User;
 
 Route::get('/', function () {
@@ -143,6 +143,7 @@ Route::group(['prefix'=>'admin'],function(){
 
         //Timetable Management Routes
         Route::get('timetable/create', [TimetableController::class, 'index'])->name('timetable.create');
+        Route::post('timetable/store', [TimetableController::class, 'store'])->name('timetable.store');
        
     
 
