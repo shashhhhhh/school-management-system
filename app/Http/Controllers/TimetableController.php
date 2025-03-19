@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Timetable;
+use App\Models\Classes;
+use App\Models\Subject;
+use App\Models\Day; 
 use Illuminate\Http\Request;
 
 class TimetableController extends Controller
@@ -14,7 +17,7 @@ class TimetableController extends Controller
     {
         $data['days'] = Day::all();
         $data['classes'] = Classes::all();
-        $data['subjects'] = Subjects::all();
+        $data['subjects'] = Subject::all();
     
         return view ('admin.timetable.create',$data);
     }

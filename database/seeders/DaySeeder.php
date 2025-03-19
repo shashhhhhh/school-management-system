@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Day; // Use the correct model name
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DaySeeder extends Seeder

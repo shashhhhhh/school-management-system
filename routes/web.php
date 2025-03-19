@@ -143,9 +143,7 @@ Route::group(['prefix'=>'admin'],function(){
 
         //Timetable Management Routes
         Route::get('timetable/create', [TimetableController::class, 'index'])->name('timetable.create');
-        Route::get('timetable/create', [TimetableController::class, 'index'])->name('timetable.create');
-        Route::get('timetable/create', [TimetableController::class, 'index'])->name('timetable.create');
-        Route::get('timetable/create', [TimetableController::class, 'index'])->name('timetable.create');
+       
     
 
         //Announcement Management Routes

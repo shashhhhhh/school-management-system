@@ -15,7 +15,7 @@
               </div>
               <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
-                      <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
+                      <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
                       <li class="breadcrumb-item active">Assign Subject To Teacher List</li>
                   </ol>
               </div>
@@ -33,59 +33,64 @@
 
                   <div class="card">
                     @if(Session::has('success'))
-                    <div class="alert alert-success">
-{{Session::get('success')}}
-                    </div>
-                        @endif
-                      <div class="card-header">
-                        <form action="" class="row">
+                      <div class="alert alert-success">
+                          {{ Session::get('success') }}
+                      </div>
+                    @endif
+                    <div class="card-header">
+                      <form action="" method="GET" class="row">
                           <div class="form-group col-md-3">
-                            <select name="class_id" class="form-control">
-                                <option disabled selected>Select Class</option>
-                                @foreach ($classes as $class)
-                                    <option value="{{$class->id}}" {{ $class->id == request('class_id') ? 'selected' : '' }}>{{$class->name}}</option>
-                                @endforeach
-                            </select>
+                              <select name="class_id" class="form-control">
+                                  <option disabled selected>Select Class</option>
+                                  @foreach ($classes as $class)
+                                      <option value="{{ $class->id }}" {{ $class->id == request('class_id') ? 'selected' : '' }}>
+                                          {{ $class->name }}
+                                      </option>
+                                  @endforeach
+                              </select>
                           </div>
                           <div class="col-md-3">
-                            <button type="submit" class="btn btn-primary">Filter</button>
+                              <button type="submit" class="btn btn-primary">Filter</button>
                           </div>
-                        </form>
-                      </div>
+                      </form>
+                    </div>
 
-                      <div class="card-body">
-                          <table id="example1" class="table table-bordered table-striped">
-                              <thead>
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Class Name</th>
+                                    <th>Subject Name</th>
+                                    <th>Theory/Practical</th>
+                                    <th>Teacher Name</th>
+                                    <th>Created Time</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($assign_teachers as $assign_teacher)
                                   <tr>
-                                      <th>ID</th>
-                                      <th>Class Name</th>
-                                      <th>Subject Name</th>
-                                      <th>Theory/Practical</th>
-                                      <th>Teacher Name</th>
-                                      <th>Created Time</th>
-                                      <th>Edit</th>
-                                      <th>Delete</th>
+                                      <td>{{ $assign_teacher->id }}</td>
+                                      <td>{{ $assign_teacher->class->name }}</td>
+                                      <td>{{ $assign_teacher->subject->name }}</td>
+                                      <td>{{ $assign_teacher->subject->type }}</td>
+                                      <td>{{ $assign_teacher->teacher->name }}</td>
+                                      <td>{{ $assign_teacher->created_at }}</td>
+                                      <td>
+                                          <a href="{{ route('assign-teacher.edit', $assign_teacher->id) }}" class="btn btn-primary">Edit</a>
+                                      </td>
+                                      <td>
+                                          <a href="{{ route('assign-teacher.delete', $assign_teacher->id) }}" 
+                                             onclick="return confirm('Are You Sure You Want To Delete This Item?');" 
+                                             class="btn btn-danger">Delete</a>
+                                      </td>
                                   </tr>
-                              </thead>
-                              <tbody>
-                                @foreach($assign_teachers as assign_teacher)
-                                  <tr>
-                                      <td>{{$assign_teacher->id}}</td>
-                                      <td>{{$assign_teacher->class->name}}</td>
-                                      <td>{{$assign_teacher->subject->name}}</td>
-                                      <td>{{$assign_teacher->subject->type}}</td>
-                                      <td>{{$assign_teacher->teacher->name}}</td>
-                                      <td>{{$assign_teacher->created_at}}</td>
-                                      <td><a href="{{route('assign-teacher.edit',$assign_teacher->id)}}" 
-                                      class="btn btn-primary">Edit</a></td>
-                                      <td><a href="{{route('assign-teacher.delete',$assign_teacher->id)}}" 
-                                      onclick="return confirm('Are You Sure You Want To Delete This Item?');" class="btn 
-                                      btn-danger">Delete</a></td>
-                                  </tr>
-                                  @endforeach
-                              </tbody>
-                          </table>
-                      </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
 
                   </div>
 
@@ -98,7 +103,7 @@
   </section>
 
 </div>
-@endsection
+
 @section('customJS')
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -114,15 +119,17 @@
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script src="dist/js/adminlte.min2167.js?v=3.2.0"></script>
-
 <script src="dist/js/demo.js"></script>
 
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "responsive": true, 
+      "lengthChange": false, 
+      "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
