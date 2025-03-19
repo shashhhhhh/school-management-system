@@ -49,15 +49,26 @@ class TimetableController extends Controller
         return redirect()->route('timetable.create')->with('success', 'Timetable Created Successfully');
     }
 
-    public function read(Timetable $timetable)
-    {
-        $data['tabletime'] = Timetable::with(['class','subject','day'])->get();
-        return view('admin.timetable.list');
+    public function read(Request $req)
+    {   
+        $data['classes'] = Classes::all();
+   
+        $tabletimes = Timetable::with(['class','subject','day']);
+        if($req->class_id){
+            $tabletimes->where('class_id',$req->class_id);
+        }
+        if($req->subject_id){
+            $tabletimes->where('subject_id',$req->subject_id);
+        }
+        $data['tabletimes'] = $tabletimes->get();
+        return view('admin.timetable.list',$data);
     }
 
-    public function edit(Timetable $timetable)
+    public function delete($id)
     {
-        //
+        $data = Timetable::find($id);
+        $data->delete();
+        return redirect()->route('timetable.read')->with('success','Timetable deleted Successfully');
     }
 
 

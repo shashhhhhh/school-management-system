@@ -100,7 +100,7 @@
     </section>
 
 </div>
-@section('customJS')
+ @section('customJS')
     <script>
         $('#class_id').change(function(){
             const class_id = $(this).val();

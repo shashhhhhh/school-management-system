@@ -37,6 +37,29 @@
                             {{Session::get('success')}}
                         </div>
                         @endif
+                    
+                    <div class="card-header">
+                      <form action="" method="GET" class="row">
+                          <div class="form-group col-md-3">
+                            <select name="class_id" id="class_id" class="form-control">
+                                <option disabled selected>Select Class</option>
+                                     @foreach ($classes as $class)
+                                        <option value="{{ $class->id }}" {{ $class->id == request('class_id') ? 'selected' : '' }}>{{ $class->name }}</option>
+                                    @endforeach
+                            </select>
+                          </div>
+                          <div class="form-group col-md-3">
+                            <select name="subject_id" id="subject_id" class="form-control">
+                                <option disabled selected>Select Subject</option>
+                            </select>
+                          </div>
+                          
+                          <div class="col-md-3">
+                              <button type="submit" class="btn btn-primary">Filter</button>
+                          </div>
+                      </form>
+                    </div>
+
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
@@ -58,10 +81,10 @@
                                         <td>{{$timetable->class->name}}</td>
                                         <td>{{$timetable->subject->name}}</td>
                                         <td>{{$timetable->day->name}}</td>
-                                        <td>{{$$timetable->start_time}}</td>
-                                        <td>{{$timetable->end_time}}</td>
-                                        <td>{{$$timetable->room_no}}</td>
-                                        <td><a href="{{route('teacher.delete',$timetable->id)}}" onclick="return confirm('Are You Sure You Want To Delete This Item?');" class="btn btn-danger">Delete</a></td>
+                                        <td>{{ \Carbon\Carbon::createFromFormat('H:i', $timetable->start_time)->format('h:i A') }}</td>
+                                        <td>{{ \Carbon\Carbon::createFromFormat('H:i', $timetable->end_time)->format('h:i A') }}</td>
+                                        <td>{{$timetable->room_no}}</td>
+                                        <td><a href="{{route('timetable.delete',$timetable->id)}}" onclick="return confirm('Are You Sure You Want To Delete This Item?');" class="btn btn-danger">Delete</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -118,4 +141,26 @@
         });
     });
 </script>
+@section('customJS')
+    <script>
+        $('#class_id').change(function(){
+            const class_id = $(this).val();
+            $.ajax({
+                url: "{{ route('findSubject') }}",
+                type:"get",
+                data: {class_id},
+                dataType: 'json',
+                success: function(response){
+                    $('#subject_id').find('option').not(":first").remove();
+                    $.each(response['subjects'],(key,item)=>{
+                        $('#subject_id').append(`
+                            <option value="${item.subject_id}">${item.subject.name}</option>`
+                        )
+
+                    })
+                }
+            })
+        })
+    </script>
+@endsection
 @endsection

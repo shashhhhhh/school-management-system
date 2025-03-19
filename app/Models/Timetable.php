@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Day;
 use Illuminate\Database\Eloquent\Factories\HasFactory; 
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,8 +24,8 @@ class Timetable extends Model
         return $this->belongsTo(Subject::class, 'subject_id');
     }
 
-    public function teacher()
+    public function day()
     {
-        return $this->belongsTo(User::class, 'teacher_id');
+        return $this->belongsTo(Day::class, 'day_id');
     }
 }
