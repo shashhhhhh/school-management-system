@@ -39,7 +39,9 @@
                         @endif
                       <div class="card-header">
                           <h3 class="card-title">Fee Structure List</h3>
+                        </div>
                           {{-- <div class = "row"> --}}
+                          <div class="card-body">  
                             <form action="">
                             <div class="form-group col-md-4">
                                 <label>Select Academic Year</label>
@@ -64,6 +66,7 @@
                            <div class="col-md-4 form-group"> 
                             <button type="submit" class="btn btn-success">Filter Data</button></div>
                          </form>
+                        </div>
                         {{-- </div> --}}
                       </div>
 
@@ -117,11 +120,7 @@
                               </tbody>
                               <tfoot>
                                   <tr>
-                                      <th>Rendering engine</th>
-                                      <th>Browser</th>
-                                      <th>Platform(s)</th>
-                                      <th>Engine version</th>
-                                      <th>CSS grade</th>
+                                    
                                   </tr>
                               </tfoot>
                           </table>

@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\AssignTeacherToClass;
 use App\Models\Announcement;
 use App\Models\User;
+use App\Models\Classes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -36,8 +38,8 @@ class UserController extends Controller
 
     public function mySubject()
     {
-       $class_id = Auth::guard("web")->user()->class_id;
-       $data['my_subjects'] = AssignTeacherToClass::where('class_id')->with('subject','teacher')->get();
+       $class_id = Auth::guard('web')->user()->class_id;
+       $data['my_subjects'] = AssignTeacherToClass::where('class_id',$class_id)->with('subject','teacher')->get();
         return view ('student.my_subject',$data);
     }
 

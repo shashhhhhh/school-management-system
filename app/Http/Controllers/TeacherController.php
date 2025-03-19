@@ -114,6 +114,6 @@ class TeacherController extends Controller
         $data['assign_class'] = AssignTeacherToClass::where('teacher_id', $teacher_id)
             ->with(['class', 'subject'])->get();
         
-        return view('teacher.my-class', $data);
+        return view('teacher.my_class', $data);
     }
 };

@@ -34,24 +34,10 @@
                   <div class="card">
                     @if(Session::has('success'))
                     <div class="alert alert-success">
-{{Session::get('success')}}
+      {{Session::get('success')}}
                     </div>
                         @endif
-                      <!-- <div class="card-header">
-                        <form action="" class="row">
-                          <div class="form-group col-md-3">
-                            <select name="class_id" class="form-control">
-                                <option disabled selected>Select Class</option>
-                                @foreach ($classes as $class)
-                                    <option value="{{$class->id}}" {{ $class->id == request('class_id') ? 'selected' : '' }}>{{$class->name}}</option>
-                                @endforeach
-                            </select>
-                          </div>
-                          <div class="col-md-3">
-                            <button type="submit" class="btn btn-primary">Filter</button>
-                          </div>
-                        </form>
-                      </div> -->
+                     
 
                       <div class="card-body">
                           <table id="example1" class="table table-bordered table-striped">
@@ -67,10 +53,10 @@
                               <tbody>
                                 @foreach($my_subjects as $mysubject)
                                   <tr>
-                                      <td>{{mysubject->id}}</td>
-                                      <td>{{mysubject->subject->name}}</td>
-                                      <td>{{mysubject->subject->type}}</td>
-                                      <td>{{mysubject->teacher->name}}</td>
+                                      <td>{{$mysubject->id}}</td>
+                                      <td>{{$mysubject->subject->name}}</td>
+                                      <td>{{$mysubject->subject->type}}</td>
+                                      <td>{{$mysubject->teacher->name}}</td>
                                   </tr>
                                   @endforeach
                               </tbody>

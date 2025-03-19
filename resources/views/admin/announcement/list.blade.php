@@ -66,14 +66,7 @@
                                   @endforeach
                               </tbody>
                               <tfoot>
-                                  <tr>
-                                      <th>ID</th>
-                                      <th>Type</th>
-                                      <th>Brodcast To</th>
-                                      <th>Created Time</th>
-                                      <th>Edit</th>
-                                      <th>Delete</th>
-                                  </tr>
+                                 
                               </tfoot>
                           </table>
                       </div>

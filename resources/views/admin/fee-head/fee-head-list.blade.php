@@ -63,15 +63,7 @@
                                   </tr>
                                   @endforeach
                               </tbody>
-                              <tfoot>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>name</th>
-                                    <th>Created ON</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                              </tfoot>
+                              
                           </table>
                       </div>
 

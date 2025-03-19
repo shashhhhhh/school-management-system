@@ -99,19 +99,7 @@
                                     @endforeach
                                 </tbody>
                                 <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Academic Year</th>
-                                        <th>Class</th>
-                                        <th>Father's Name</th>
-                                        <th>Mother's Name</th>
-                                        <th>Mobile No</th>
-                                        <th>Email</th>
-                                        <th>Created ON</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
-                                    </tr>
+                                  
                                 </tfoot>
                             </table>
                         </div>
