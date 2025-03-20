@@ -230,13 +230,13 @@
                                 <li class="nav-item">
                                     <a href="{{route('academic-year.create')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Record</p>
+                                        <p>Add Academic Year</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('academic-year.read')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>View Record</p>
+                                        <p>View Academic Year</p>
                                     </a>
                                 </li>
                             </ul>
@@ -254,13 +254,13 @@
                                 <li class="nav-item">
                                     <a href="{{route('class.create')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Record</p>
+                                        <p>Add Class</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('class.read')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>View Record</p>
+                                        <p>View Class</p>
                                     </a>
                                 </li>
                             </ul>
@@ -278,13 +278,13 @@
                                 <li class="nav-item">
                                     <a href="{{route('fee-head.create')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Record</p>
+                                        <p>Add Fee Head</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('fee-head.read')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>View Record</p>
+                                        <p>View Fee Head</p>
                                     </a>
                                 </li>
                             </ul>
@@ -302,13 +302,13 @@
                                 <li class="nav-item">
                                     <a href="{{route('fee-structure.create')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Record</p>
+                                        <p>Add Fee Structure</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('fee-structure.read')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>View Record</p>
+                                        <p>View Fee Structure</p>
                                     </a>
                                 </li>
                             </ul>
