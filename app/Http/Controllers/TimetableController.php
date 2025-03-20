@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AssignSubjectToClass; 
+use App\Models\AssignSubjectToClass; // Use this if it's a model
 use App\Models\Timetable;
 use App\Models\Classes;
 use App\Models\Subject;
