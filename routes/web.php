@@ -9,13 +9,15 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AssignSubjectToClassController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AssignTeacherToClassController;
 use App\Http\Controllers\TimetableController;
+use App\Http\Controllers\UserController;
+
 use App\Models\User;
+
 
 Route::get('/', function () {
     return view('admin.login');
@@ -33,6 +35,7 @@ Route::group(['prefix' => 'student'], function () {
     //auth
     Route::group(['middleware' => 'auth'], function () {
         Route::get('dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
+        Route::get('timetable', [UserController::class, 'timetable'])->name('student.timetable');
         Route::get('logout', [UserController::class, 'logout'])->name('student.logout');
         Route::get('change-password', [UserController::class, 'changePassword'])->name('student.changePassword');
         Route::post('update-password', [UserController::class, 'updatePassword'])->name('student.updatePassword');
